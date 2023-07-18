@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            box-sizing: border-box;
+            margin:2%;
+            padding:0%;
+        }
+        .btn2{
+            width: 100%;
+            text-decoration: none;
+            box-shadow: 3px 10px 5px black;
+            border-radius: 7px;
+            border: solid black 3px;
+            cursor:pointer;
+        }
+        .art{
+            display:grid;
+            grid-template-columns: 2fr 1fr;
+            grid-template-rows: 1fr;
+            grid-template-areas: "details img";
+            /* border: 4px solid black;
+            border-radius: 10px;
+            box-shadow:3px 3px 10px 5px rgb(78, 76, 76); */
+        }
+        .details{
+            grid-area:details;
+        }
+        .image{
+            grid-area:img;
+        }
+        .image img{
+           border-radius: 50%;
+           box-shadow: 3px 3px 10px 5px #000;
+        }
+        #navbar{
+	        grid-area: nav;
+        }
+        #navbar{
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+            padding:10px 0px;
+            position:relative;
+            z-index:1;
+            background-color: #603F83FF;
+            color:white;
+            border-radius: 15px;
+        }
+        #navbar ul{
+            display:flex;
+            justify-content:center;
+            align-items: center;
+            margin-top: 10px;
+        }
+        .container #navbar ul li{
+            list-style:none;
+        }
+        #navbar ul li a .btn{
+            background-color: #603F83FF;
+            color:white;
+            border: none;
+            font-size: 16px;
+            font-family: 'Cinzel', serif;
+        }
+        #navbar ul li a{
+            padding:10px 18px;
+            border-radius: 5px;
+            font-family: 'Cinzel', serif;
+            font-size: 16px;
+            text-decoration:none;
+            color:white;
+        }
+        #navbar ul li a:hover{
+            background-color:#C7D3D4FF;
+            color:#603F83FF;
+            cursor:pointer;
+        }
+        #navbar ul li a .btn:hover{
+            background-color: #C7D3D4FF;
+            color:#603F83FF;;
+            border: none;
+        }
+        #navbar h1{
+            font-size:35px;
+            font-weight:500;
+            margin-top:15px;
+            padding-left: 20px;
+        }
+        .details h2{
+                font-size: 25px; box-shadow: 3px 3px 10px 5px #000;
+            }
+        .details  h3{
+                font-size: 20px;
+            }
+        label {
+            background-color: white;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            /* margin:0% 15%; */
+            /* padding: 10px 15px 10px 10px; */
+            cursor: pointer;
+            user-select: none;
+            border-radius: 10px;
+            box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+            color: black;
+            }
+
+            input {
+            display: none;
+            }
+
+            input:checked + label svg {
+            fill: hsl(0deg 100% 50%);
+            stroke: hsl(0deg 100% 50%);
+            animation: heartButton 1s;
+            }
+
+            @keyframes heartButton {
+            0% {
+            transform: scale(1);
+            }
+
+            25% {
+            transform: scale(1.3);
+            }
+
+            50% {
+            transform: scale(1);
+            }
+
+            75% {
+            transform: scale(1.3);
+            }
+
+            100% {
+            transform: scale(1);
+            }
+            }
+
+            input + label .action {
+            position: relative;
+            overflow: hidden;
+            display: grid;
+            }
+
+            input + label .action span {
+            grid-column-start: 1;
+            grid-column-end: 1;
+            grid-row-start: 1;
+            grid-row-end: 1;
+            transition: all .5s;
+            }
+
+            input + label .action span.option-1 {
+            transform: translate(0px,0%);
+            opacity: 1;
+            }
+
+            input:checked + label .action span.option-1 {
+            transform: translate(0px,-100%);
+            opacity: 0;
+            }
+
+            input + label .action span.option-2 {
+            transform: translate(0px,100%);
+            opacity: 0;
+            }
+
+            input:checked + label .action span.option-2 {
+            transform: translate(0px,0%);
+            opacity: 1;
+            }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <nav id="navbar">
+            <h1>FunFrenzy</h1>
+            <ul>
+                <% if(id3=="audience"){ %>
+                    <li><a href="/page1"><button name="home" type="submit" class="btn">HOME</button></a></li>
+                <%}%>
+                <% if(id3=="artist"){ %>
+                    <li><a href="/page1ar"><button name="home" type="submit" class="btn">HOME</button></a></li>
+                <%}%>
+                <li><a href="/contactus"><button name="home" type="submit" class="btn">CONTACT US</button></a></li>
+                <li><a href="/about"><button name="home" type="submit" class="btn">ABOUT US</button></a></li>
+            </ul>
+    </nav> 
+    <% if(l1.length!=0){%>
+        <% l1.forEach(function(l1){%>
+          <form action="/page3" method="post">
+              <input type="text" value="<%=l1.name%>" style="display:none" name="name123">
+              <input type="text" value="<%=id1%>" style="display:none" name="id1">
+              <!-- <input type="text" value="<%selecttype%>" style="display:none" name="selecttype"> -->
+              <input type="text" value="<%=id3%>" style="display:none" name="rad">
+          <button type="submit" class="btn2" name="something">
+              <div class="art">
+                  <div class="details">
+                      <h2><%=l1.name%></h2>
+                      <h3><%=l1.email%></h3>
+                      <!-- <a href="<%=l1.pic%>"><%=l1.name%></a> -->
+                  </div>
+                  <div class="image">
+                      <img src="<%=l1.pic%>"  height="100px"  width="100px" />
+                  </div>
+            </button>
+          </form>
+          <%});%>
+      <%}%>
+  </div>
+  </body>
+  </html>
